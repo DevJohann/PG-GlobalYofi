@@ -1,0 +1,47 @@
+package com.globalyofi.backend.controller;
+
+import com.globalyofi.backend.dto.ProveedorRequestDTO;
+import com.globalyofi.backend.dto.ProveedorResponseDTO;
+import com.globalyofi.backend.service.ProveedorService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/proveedores")
+@CrossOrigin(origins = "*")
+public class ProveedorController {
+
+    @Autowired
+    private ProveedorService proveedorService;
+
+    //Público: listar proveedores (puede ser visible en catálogos, etc.)
+    @GetMapping
+    public List<ProveedorResponseDTO> listar() {
+        return proveedorService.obtenerTodos();
+    }
+
+    //Solo ADMIN puede crear proveedores
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping
+    public ProveedorResponseDTO crear(@Valid @RequestBody ProveedorRequestDTO dto) {
+        return proveedorService.crear(dto);
+    }
+
+    //Solo ADMIN puede actualizar
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/{id}")
+    public ProveedorResponseDTO actualizar(@PathVariable Integer id, @Valid @RequestBody ProveedorRequestDTO dto) {
+        return proveedorService.actualizar(id, dto);
+    }
+
+    //Solo ADMIN puede eliminar
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Integer id) {
+        proveedorService.eliminar(id);
+    }
+}
