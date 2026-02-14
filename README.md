@@ -95,9 +95,9 @@ src/
 
 ### 🧑‍💻 Autores
 Edison Mauricio Beltran
-📧 [Correo mauricio]
-🌐 [Linkenlid Mauricio]
+📧 [embeltrang@unbosque.edu.co]
+🌐 [https://www.linkedin.com/in/mauricio-beltr%C3%A1n-345bb92b4/]
 
-Jhohann Toncon
-📧 [Correo johann]
-🌐 [Linkenlid johann]
+Johann Toncon
+📧 [jtoncon@unbosque.edu.co]
+🌐 [www.linkedin.com/in/johann-felipe]
